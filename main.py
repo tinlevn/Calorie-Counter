@@ -1,5 +1,5 @@
 import pandas as pd
-
+import menu
 """
 Reading .xlxs file from Excel and turning it into .csv for easier
 panda file handling/reading
@@ -19,15 +19,18 @@ your offline key storage
 """
 
 if __name__ == '__main__':
+    df = pd.read_csv('resource/activitycsv')
 
-df = pd.read_csv('resource/activitycsv')
+    weight_choice = menu.weight_selection()
+    action=menu.main_menu()
+    if action==1:
 
+    elif action==2:
 
-inp = input("Enter your weight and favorite activity separated by a space between them: ").split()
+    else:
 
-query = df[[str(inp[0])]].loc[df['activity and weight in pounds']==str(inp[1])].values[0]
-
-activity_interval = 30
-
-print(f'You will burn {int(query)} calories while {inp[1]} for {activity_interval} minutes')
+    inp = input("Enter your weight and favorite activity separated by a space between them: ").split()
+    query = df[[str(inp[0])]].loc[df['activity and weight in pounds']==str(inp[1])].values[0]
+    activity_interval = 30
+    print(f'You will burn {int(query)} calories while {inp[1]} for {activity_interval} minutes')
 
