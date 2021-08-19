@@ -1,36 +1,34 @@
-import pandas as pd
-import menu
 """
+Tin Thanh Le
+Junior Developer
+Simple calorie counter program with information provided as reference from an
+activity tracking sheet from prevea.com/leadwell
 Reading .xlxs file from Excel and turning it into .csv for easier
 panda file handling/reading
- 
+
 import openpyxl
 read_file = pd.read_excel(r'resource/activity.xlsx')
 read_file.to_csv(r'resource/activitycsv', index = None, header=True)
 """
-"""
-Tin Thanh Le
-Junior Developer
-Smeexer 0.1
-This program will mix your
-cryptocurrency wallet seed phrases,
-adding another layer of security for
-your offline key storage
-"""
+
+
+import pandas as pd
+import menu
 
 if __name__ == '__main__':
-    df = pd.read_csv('resource/activitycsv')
+
+    df = pd.read_csv('resource/activities.csv')
+    pd.set_option("display.max_rows", None, "display.max_columns", None)
 
     weight_choice = menu.weight_selection()
-    action=menu.main_menu()
-    if action==1:
-
-    elif action==2:
-
+    action = menu.main_menu()
+    if action == 1:
+        print(df['Activities'])
+        action=menu.main_menu()
     else:
+        activity_number = int(input("Select activity number from provided list(choose 1 to see) "))
+        info = input("Enter your weight and duration in minutes separated by a space: ").split()
+        query = df[info[0]][activity_number]
+        print(f'You will burn {int(query)*int(info[1])/30} calories while { df["Activities"][activity_number]} for {info[1]} minutes')
 
-    inp = input("Enter your weight and favorite activity separated by a space between them: ").split()
-    query = df[[str(inp[0])]].loc[df['activity and weight in pounds']==str(inp[1])].values[0]
-    activity_interval = 30
-    print(f'You will burn {int(query)} calories while {inp[1]} for {activity_interval} minutes')
 
