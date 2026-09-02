@@ -88,21 +88,11 @@ export function CalorieBurnCard({ calories, selectedActivity, durationLabel, onA
           type="button"
           onClick={onAdd}
           disabled={!canAdd}
-          className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm transition-all"
-          style={{
-            background: 'rgba(255,248,236,0.18)',
-            color: '#FFF8EC',
-            border: '1px solid rgba(255,248,236,0.25)',
-            backdropFilter: 'blur(8px)',
-            cursor: canAdd ? 'pointer' : 'not-allowed',
-            opacity: canAdd ? 1 : 0.5,
-          }}
-          onMouseEnter={e => {
-            if (canAdd) e.currentTarget.style.background = 'rgba(255,248,236,0.28)'
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.background = 'rgba(255,248,236,0.18)'
-          }}
+          className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm transition-all border backdrop-blur-md ${
+            canAdd
+              ? 'bg-[rgba(255,248,236,0.18)] hover:bg-[rgba(255,248,236,0.28)] text-[#FFF8EC] border-[rgba(255,248,236,0.25)] cursor-pointer opacity-100'
+              : 'bg-[rgba(255,248,236,0.18)] text-[#FFF8EC] border-[rgba(255,248,236,0.25)] cursor-not-allowed opacity-50'
+          }`}
         >
           <Plus className="w-4 h-4" />
           {t('burnCard.addButton')}

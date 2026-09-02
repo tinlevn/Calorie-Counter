@@ -8,21 +8,12 @@ type Props = {
 }
 
 export function LogEntryRow({ entry, onRemove }: Props) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const displayName = t(`activities.${entry.activityName}`, entry.activityName)
 
   return (
     <div
-      className="group flex items-center justify-between p-3 rounded-xl transition-all"
-      style={{ border: '1px solid transparent' }}
-      onMouseEnter={e => {
-        e.currentTarget.style.background = 'rgba(232,220,200,0.04)'
-        e.currentTarget.style.borderColor = 'var(--border-color)'
-      }}
-      onMouseLeave={e => {
-        e.currentTarget.style.background = 'transparent'
-        e.currentTarget.style.borderColor = 'transparent'
-      }}
+      className="group flex items-center justify-between p-3 rounded-xl transition-all border border-transparent hover:bg-[rgba(232,220,200,0.04)] hover:border-[var(--border-color)]"
     >
       <div>
         <p className="font-medium text-sm line-clamp-1" title={displayName}>
@@ -36,23 +27,14 @@ export function LogEntryRow({ entry, onRemove }: Props) {
             fontVariantNumeric: 'tabular-nums',
           }}
         >
-          {entry.durationLabel} · {entry.calories.toLocaleString()} {t('dailyLog.kcal')}
+          {entry.durationLabel} · {entry.calories.toLocaleString(i18n.language)} {t('dailyLog.kcal')}
         </p>
       </div>
 
       <button
         type="button"
         onClick={() => onRemove(entry.id)}
-        className="p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all"
-        style={{ color: 'var(--text-muted)' }}
-        onMouseEnter={e => {
-          e.currentTarget.style.color = 'var(--accent-passionfruit)'
-          e.currentTarget.style.background = 'rgba(232,68,47,0.1)'
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.color = 'var(--text-muted)'
-          e.currentTarget.style.background = 'transparent'
-        }}
+        className="p-2 rounded-lg opacity-70 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100 focus:opacity-100 focus-visible:opacity-100 transition-all text-[var(--text-muted)] hover:text-[var(--accent-passionfruit)] hover:bg-[rgba(232,68,47,0.1)] cursor-pointer"
         aria-label={`Remove ${displayName}`}
         title="Remove"
       >

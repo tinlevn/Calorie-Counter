@@ -3,7 +3,16 @@ import { initReactI18next } from 'react-i18next'
 import en from './locales/en.json'
 import vi from './locales/vi.json'
 
-const savedLanguage = localStorage.getItem('i18nextLng') || 'vi'
+export function getSavedLanguage(): 'en' | 'vi' {
+  try {
+    const v = localStorage.getItem('i18nextLng')
+    return v === 'en' || v === 'vi' ? v : 'vi'
+  } catch {
+    return 'vi'
+  }
+}
+
+const savedLanguage = getSavedLanguage()
 
 i18n
   .use(initReactI18next)

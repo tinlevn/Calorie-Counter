@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next'
 import type { WeightUnit, DurationUnit } from '../types'
 
 type Props = {
-  weight: number | ''
+  weight: number | null
   weightUnit: WeightUnit
-  durationValue: number | ''
+  durationValue: number | null
   durationUnit: DurationUnit
-  onWeightChange: (v: number | '') => void
+  onWeightChange: (v: number | null) => void
   onWeightUnitChange: (u: WeightUnit) => void
-  onDurationChange: (v: number | '') => void
+  onDurationChange: (v: number | null) => void
   onDurationUnitChange: (u: DurationUnit) => void
 }
 
@@ -24,6 +24,24 @@ export function DetailsCard({
   onDurationUnitChange,
 }: Props) {
   const { t } = useTranslation()
+
+  const handleWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === '') {
+      onWeightChange(null)
+    } else {
+      const n = Number(e.target.value)
+      onWeightChange(n < 0 ? 0 : n)
+    }
+  }
+
+  const handleDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === '') {
+      onDurationChange(null)
+    } else {
+      const n = Number(e.target.value)
+      onDurationChange(n < 0 ? 0 : n)
+    }
+  }
 
   return (
     <div
@@ -46,16 +64,14 @@ export function DetailsCard({
             {t('details.bodyWeight')}
           </label>
           <div
-            className="flex rounded-xl overflow-hidden"
-            style={{ border: '1px solid var(--border-color)', transition: 'border-color 0.2s' }}
-            onFocus={e => (e.currentTarget.style.borderColor = 'var(--accent-matcha)')}
-            onBlur={e => (e.currentTarget.style.borderColor = 'var(--border-color)')}
+            className="flex rounded-xl overflow-hidden transition-[border-color] duration-200 focus-within:!border-[var(--accent-matcha)]"
+            style={{ border: '1px solid var(--border-color)' }}
           >
             <input
               id="weight-input"
               type="number"
-              value={weight}
-              onChange={e => onWeightChange(e.target.value === '' ? '' : Number(e.target.value))}
+              value={weight ?? ''}
+              onChange={handleWeightChange}
               className="w-full px-4 py-2.5 bg-transparent outline-none"
               style={{
                 color: 'var(--text-primary)',
@@ -74,7 +90,7 @@ export function DetailsCard({
                   key={u}
                   type="button"
                   aria-label={`Select ${u}`}
-                  className="px-3 text-sm font-semibold transition-colors"
+                  className="px-3 text-sm font-semibold transition-colors cursor-pointer"
                   style={{
                     color: weightUnit === u ? 'var(--accent-matcha)' : 'var(--text-muted)',
                     background: weightUnit === u ? 'rgba(139,168,136,0.15)' : 'transparent',
@@ -94,10 +110,8 @@ export function DetailsCard({
             {t('details.duration')}
           </label>
           <div
-            className="flex rounded-xl overflow-hidden"
-            style={{ border: '1px solid var(--border-color)', transition: 'border-color 0.2s' }}
-            onFocus={e => (e.currentTarget.style.borderColor = 'var(--accent-matcha)')}
-            onBlur={e => (e.currentTarget.style.borderColor = 'var(--border-color)')}
+            className="flex rounded-xl overflow-hidden transition-[border-color] duration-200 focus-within:!border-[var(--accent-matcha)]"
+            style={{ border: '1px solid var(--border-color)' }}
           >
             <div className="flex items-center pl-3" style={{ color: 'var(--text-muted)' }}>
               <Clock className="w-4 h-4 flex-shrink-0" />
@@ -105,10 +119,8 @@ export function DetailsCard({
             <input
               id="duration-input"
               type="number"
-              value={durationValue}
-              onChange={e =>
-                onDurationChange(e.target.value === '' ? '' : Number(e.target.value))
-              }
+              value={durationValue ?? ''}
+              onChange={handleDurationChange}
               className="w-full px-3 py-2.5 bg-transparent outline-none"
               style={{
                 color: 'var(--text-primary)',
@@ -128,7 +140,7 @@ export function DetailsCard({
                   key={u}
                   type="button"
                   aria-label={`Select ${u}`}
-                  className="px-3 text-sm font-semibold transition-colors"
+                  className="px-3 text-sm font-semibold transition-colors cursor-pointer"
                   style={{
                     color: durationUnit === u ? 'var(--accent-matcha)' : 'var(--text-muted)',
                     background: durationUnit === u ? 'rgba(139,168,136,0.15)' : 'transparent',
@@ -142,12 +154,12 @@ export function DetailsCard({
           </div>
 
           {/* Conversion hint in hours mode */}
-          {durationUnit === 'hr' && durationValue !== '' && durationValue !== 0 && (
+          {durationUnit === 'hr' && durationValue !== null && durationValue > 0 && (
             <p
               className="text-xs"
               style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
             >
-              {t('details.minutesHint', { minutes: Math.round((durationValue as number) * 60) })}
+              {t('details.minutesHint', { minutes: Math.round(durationValue * 60) })}
             </p>
           )}
         </div>

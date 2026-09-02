@@ -10,18 +10,18 @@ import { CalorieBurnCard } from './components/CalorieBurnCard'
 import { DailyLog }        from './components/DailyLog'
 
 // ── Math note ──────────────────────────────────────────────────────────────
-// Dataset stores `calsPerMinutePerLb`.
-// Formula: calories = calsPerMinutePerLb × weightInLbs × durationInMinutes
-// Units are normalised to lbs + minutes before calculation.
+// All activities use MET values from the 2024 Adult Compendium of Physical
+// Activities (pacompendium.com). Formula:
+//   Calories = MET × weight_kg × duration_hours
 
 function App() {
   const { t } = useTranslation()
 
   // ── Inputs ────────────────────────────────────────────────────────────────
-  const [weight,       setWeight]       = useState<number | ''>(70)
-  const [weightUnit,   setWeightUnit]   = useState<WeightUnit>('kg')
-  const [durationValue, setDurationValue] = useState<number | ''>(30)
-  const [durationUnit, setDurationUnit] = useState<DurationUnit>('min')
+  const [weight,        setWeight]        = useState<number | null>(70)
+  const [weightUnit,    setWeightUnit]    = useState<WeightUnit>('kg')
+  const [durationValue, setDurationValue] = useState<number | null>(30)
+  const [durationUnit,  setDurationUnit]  = useState<DurationUnit>('min')
 
   // ── Activity ──────────────────────────────────────────────────────────────
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null)
@@ -31,38 +31,32 @@ function App() {
 
   // ── Derived values ────────────────────────────────────────────────────────
   const weightKg = useMemo(() => {
-    if (weight === '') return 0
-    return weightUnit === 'kg' ? (weight as number) : (weight as number) / 2.20462
+    if (weight === null || weight <= 0) return 0
+    return weightUnit === 'kg' ? weight : weight / 2.20462
   }, [weight, weightUnit])
 
   const durationHours = useMemo(() => {
-    if (durationValue === '') return 0
-    return durationUnit === 'hr' ? (durationValue as number) : (durationValue as number) / 60
+    if (durationValue === null || durationValue <= 0) return 0
+    return durationUnit === 'hr' ? durationValue : durationValue / 60
   }, [durationValue, durationUnit])
 
   const currentCalories = useMemo(() => {
     if (!selectedActivity || !weightKg || !durationHours) return 0
-    const met = selectedActivity.met
-    if (met) {
-      return Math.round(met * (weightKg as number) * (durationHours as number))
-    }
-    // fallback to legacy calsPerMinutePerLb if MET not available
-    return Math.round(selectedActivity.calsPerMinutePerLb * (weightKg as number) * 2.20462 * (durationHours as number) * 60)
+    return Math.round(selectedActivity.met * weightKg * durationHours)
   }, [selectedActivity, weightKg, durationHours])
+
   const durationInMinutes = useMemo(() => {
-    if (durationValue === '') return 0
-    return durationUnit === 'hr'
-      ? (durationValue as number) * 60
-      : (durationValue as number)
+    if (durationValue === null || durationValue <= 0) return 0
+    return durationUnit === 'hr' ? durationValue * 60 : durationValue
   }, [durationValue, durationUnit])
 
   // ── Duration label (passed to CalorieBurnCard + stored in log) ────────────
   const durationLabel = useMemo(() => {
-    if (durationValue === '') return '—'
+    if (durationValue === null) return '—'
     const minStr = t('details.min', 'min')
     const hrStr = t('details.hr', 'h')
     return durationUnit === 'hr'
-      ? `${durationValue} ${hrStr} (${Math.round((durationValue as number) * 60)} ${minStr})`
+      ? `${durationValue} ${hrStr} (${Math.round(durationValue * 60)} ${minStr})`
       : `${durationValue} ${minStr}`
   }, [durationValue, durationUnit, t])
 
@@ -72,7 +66,7 @@ function App() {
     setLog(prev => [
       ...prev,
       {
-        id: Math.random().toString(36).substring(7),
+        id: crypto.randomUUID(),
         activityName: selectedActivity.name,
         durationMins: durationInMinutes,
         calories: currentCalories,
@@ -84,6 +78,30 @@ function App() {
 
   const removeFromLog = (id: string) =>
     setLog(prev => prev.filter(e => e.id !== id))
+
+  const handleWeightUnitChange = (newUnit: WeightUnit) => {
+    if (newUnit === weightUnit) return
+    if (weight !== null && weight > 0) {
+      if (newUnit === 'lbs') {
+        setWeight(Math.round(weight * 2.20462))
+      } else {
+        setWeight(Math.round(weight / 2.20462))
+      }
+    }
+    setWeightUnit(newUnit)
+  }
+
+  const handleDurationUnitChange = (newUnit: DurationUnit) => {
+    if (newUnit === durationUnit) return
+    if (durationValue !== null && durationValue > 0) {
+      if (newUnit === 'hr') {
+        setDurationValue(Number((durationValue / 60).toFixed(2)))
+      } else {
+        setDurationValue(Math.round(durationValue * 60))
+      }
+    }
+    setDurationUnit(newUnit)
+  }
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
@@ -107,9 +125,9 @@ function App() {
               durationValue={durationValue}
               durationUnit={durationUnit}
               onWeightChange={setWeight}
-              onWeightUnitChange={setWeightUnit}
+              onWeightUnitChange={handleWeightUnitChange}
               onDurationChange={setDurationValue}
-              onDurationUnitChange={setDurationUnit}
+              onDurationUnitChange={handleDurationUnitChange}
             />
             <ActivityPicker
               selectedActivity={selectedActivity}

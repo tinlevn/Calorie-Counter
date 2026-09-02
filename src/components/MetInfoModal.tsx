@@ -296,7 +296,7 @@ export function MetInfoModal({ met, className = '' }: Props) {
                 </div>
 
                 {/* Source Note */}
-                <p className="text-[11px] text-[#8C7C6C] leading-relaxed pt-2 border-t border-[rgba(232,220,200,0.08)] flex items-center gap-1.5">
+                <p className="text-[11px] text-[#A08D7A] leading-relaxed pt-2 border-t border-[rgba(232,220,200,0.08)] flex items-center gap-1.5">
                   <ExternalLink className="w-3 h-3 shrink-0" />
                   <span>{t('metInfo.sourceNote')}</span>
                 </p>
@@ -307,16 +307,10 @@ export function MetInfoModal({ met, className = '' }: Props) {
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="px-5 py-2.5 rounded-xl font-semibold text-sm transition-all focus:outline-none focus:ring-2 focus:ring-[#FDBE02]/60 cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl font-semibold text-sm transition-all focus:outline-none focus:ring-2 focus:ring-[#FDBE02]/60 hover:brightness-110 cursor-pointer"
                   style={{
                     background: '#FDBE02',
                     color: '#1C1712',
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.filter = 'brightness(1.08)'
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.filter = 'none'
                   }}
                 >
                   {t('metInfo.close')}

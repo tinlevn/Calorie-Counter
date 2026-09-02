@@ -6,7 +6,11 @@ export function AppHeader() {
 
   const changeLanguage = (lng: 'en' | 'vi') => {
     i18n.changeLanguage(lng)
-    localStorage.setItem('i18nextLng', lng)
+    try {
+      localStorage.setItem('i18nextLng', lng)
+    } catch {
+      // Storage blocked or quota exceeded
+    }
   }
 
   const isVi = i18n.language.startsWith('vi')

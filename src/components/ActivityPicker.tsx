@@ -79,22 +79,20 @@ export function ActivityPicker({ selectedActivity, onSelect }: Props) {
           placeholder={t('activityPicker.searchPlaceholder')}
           value={search}
           onChange={e => setSearch(e.target.value)}
-          className="w-full pl-9 pr-8 py-2.5 rounded-xl outline-none transition-all"
+          className="w-full pl-9 pr-8 py-2.5 rounded-xl outline-none transition-all focus:border-[var(--accent-matcha)]"
           style={{
             background: 'rgba(22,18,16,0.6)',
             border: '1px solid var(--border-color)',
             color: 'var(--text-primary)',
             fontFamily: 'var(--font-ui)',
           }}
-          onFocus={e => (e.target.style.borderColor = 'var(--accent-matcha)')}
-          onBlur={e => (e.target.style.borderColor = 'var(--border-color)')}
         />
         {search && (
           <button
             type="button"
             aria-label="Clear search"
             onClick={() => setSearch('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-xs px-1.5 py-0.5 rounded"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-xs px-1.5 py-0.5 rounded cursor-pointer"
             style={{ color: 'var(--text-muted)', background: 'rgba(232,220,200,0.08)' }}
           >
             ✕
@@ -115,9 +113,9 @@ export function ActivityPicker({ selectedActivity, onSelect }: Props) {
                 {t('activityPicker.noResults', { query: search })}
               </p>
             ) : (
-              filteredActivities.map((activity, i) => (
+              filteredActivities.map(activity => (
                 <ActivityButton
-                  key={i}
+                  key={activity.name}
                   activity={activity}
                   isSelected={activity.name === selectedActivity?.name}
                   onSelect={onSelect}

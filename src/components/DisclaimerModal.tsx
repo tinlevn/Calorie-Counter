@@ -305,16 +305,10 @@ export function DisclaimerModal({ className = '' }: Props) {
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="px-5 py-2.5 rounded-xl font-semibold text-sm transition-all focus:outline-none focus:ring-2 focus:ring-[#FDBE02]/60 cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl font-semibold text-sm transition-all focus:outline-none focus:ring-2 focus:ring-[#FDBE02]/60 hover:brightness-110 cursor-pointer"
                   style={{
                     background: '#FDBE02',
                     color: '#1C1712',
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.filter = 'brightness(1.08)'
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.filter = 'none'
                   }}
                 >
                   {t('disclaimer.close')}

@@ -3,7 +3,7 @@ export type Activity = {
   calsPerMinutePerLb: number
   category: string
   /** MET value from the Adult Compendium of Physical Activities */
-  met?: number
+  met: number
 }
 
 export const activities: Activity[] = [
@@ -155,15 +155,7 @@ export const activities: Activity[] = [
   { category: "Household & Yard", name: "Chopping & splitting firewood", calsPerMinutePerLb: 0.045359290943563974, met: 6.0 },
 ]
 
-/** Unique ordered category list */
-export const ACTIVITY_CATEGORIES = [
-  "Cardio & Aerobics",
-  "Running & Walking",
-  "Strength & Gym",
-  "Cycling & Water",
-  "Team & Court Sports",
-  "Outdoor & Hiking",
-  "Winter Sports",
-  "Dance & Leisure",
-  "Household & Yard",
-] as const
+/** Unique ordered category list derived dynamically from activities */
+export const ACTIVITY_CATEGORIES = Array.from(
+  new Set(activities.map(a => a.category))
+)

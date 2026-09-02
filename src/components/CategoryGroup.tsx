@@ -44,22 +44,14 @@ export function CategoryGroup({
         aria-expanded={isOpen}
         aria-label={`${categoryDisplayName} (${items.length})`}
         onClick={() => onToggle(category)}
-        className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all"
-        style={{
-          background: hasSelected ? 'rgba(139,168,136,0.08)' : 'transparent',
-          border: `1px solid ${hasSelected ? 'rgba(139,168,136,0.25)' : 'transparent'}`,
-        }}
-        onMouseEnter={e => {
-          e.currentTarget.style.background = 'rgba(232,220,200,0.05)'
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.background = hasSelected
-            ? 'rgba(139,168,136,0.08)'
-            : 'transparent'
-        }}
+        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all border cursor-pointer ${
+          hasSelected
+            ? 'bg-[rgba(139,168,136,0.08)] border-[rgba(139,168,136,0.25)] hover:bg-[rgba(139,168,136,0.12)]'
+            : 'bg-transparent border-transparent hover:bg-[rgba(232,220,200,0.05)]'
+        }`}
       >
         <span className="flex items-center gap-2.5">
-          <span className="text-base leading-none">{CATEGORY_ICON[category]}</span>
+          <span className="text-base leading-none">{CATEGORY_ICON[category] ?? '⚡'}</span>
           <span
             className="font-semibold text-sm"
             style={{ color: hasSelected ? 'var(--accent-matcha)' : 'var(--text-primary)' }}
@@ -95,9 +87,9 @@ export function CategoryGroup({
           className="mt-0.5 ml-3 pl-3 space-y-0.5"
           style={{ borderLeft: '2px solid var(--border-color)' }}
         >
-          {items.map((activity, i) => (
+          {items.map(activity => (
             <ActivityButton
-              key={i}
+              key={activity.name}
               activity={activity}
               isSelected={activity.name === selectedActivityName}
               onSelect={onSelect}

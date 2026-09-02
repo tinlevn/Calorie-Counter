@@ -9,7 +9,7 @@ type Props = {
 }
 
 export function DailyLog({ log, onRemove }: Props) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const totalCalories = log.reduce((acc, e) => acc + e.calories, 0)
 
   return (
@@ -32,7 +32,7 @@ export function DailyLog({ log, onRemove }: Props) {
             fontVariantNumeric: 'tabular-nums',
           }}
         >
-          {totalCalories.toLocaleString()} {t('dailyLog.kcal')}
+          {totalCalories.toLocaleString(i18n.language)} {t('dailyLog.kcal')}
         </span>
       </h2>
 

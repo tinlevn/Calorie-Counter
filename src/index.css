@@ -11,7 +11,7 @@
   --bg-elevated:     #2A2118;   /* Dark Mocha      – cards / panels   */
   --bg-sunken:       #161210;   /* Deeper shadow   – inputs           */
   --text-primary:    #E8DCC8;   /* Warm Cream      – headings / body  */
-  --text-muted:      #8C7C6C;   /* Taupe Gray      – captions / hints */
+  --text-muted:      #A08D7A;   /* Lightened Taupe – WCAG AA compliant (>= 4.5:1) */
 
   /* ── Accent Palette ── */
   --accent-matcha:        #8BA888;
@@ -31,67 +31,6 @@
   /* ── Typography ── */
   --font-ui:   'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-mono: 'Space Mono', 'IBM Plex Mono', monospace;
-
-  /* ── Tailwind-compat HSL tokens ── */
-  --background: 28 25% 9%;
-  --foreground:  32 38% 85%;
-  --card:        28 22% 13%;
-  --card-foreground: 32 38% 85%;
-  --popover:     28 22% 13%;
-  --popover-foreground: 32 38% 85%;
-  --primary:     44 98% 50%;
-  --primary-foreground: 28 25% 9%;
-  --secondary:   122 12% 60%;
-  --secondary-foreground: 28 25% 9%;
-  --muted:       28 15% 18%;
-  --muted-foreground: 28 12% 55%;
-  --accent:      122 12% 60%;
-  --accent-foreground: 28 25% 9%;
-  --destructive: 10 78% 54%;
-  --destructive-foreground: 32 38% 95%;
-  --border:      32 18% 22%;
-  --input:       28 22% 13%;
-  --ring:        122 12% 60%;
-  --radius: 0.75rem;
-}
-
-/* ─────────────────────────────────────────────────────────
-   Tailwind v4 @theme bridge
-───────────────────────────────────────────────────────── */
-@theme {
-  --color-border:              hsl(var(--border));
-  --color-input:               hsl(var(--input));
-  --color-ring:                hsl(var(--ring));
-  --color-background:          hsl(var(--background));
-  --color-foreground:          hsl(var(--foreground));
-  --color-primary:             hsl(var(--primary));
-  --color-primary-foreground:  hsl(var(--primary-foreground));
-  --color-secondary:           hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-  --color-destructive:         hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-  --color-muted:               hsl(var(--muted));
-  --color-muted-foreground:    hsl(var(--muted-foreground));
-  --color-accent:              hsl(var(--accent));
-  --color-accent-foreground:   hsl(var(--accent-foreground));
-  --color-popover:             hsl(var(--popover));
-  --color-popover-foreground:  hsl(var(--popover-foreground));
-  --color-card:                hsl(var(--card));
-  --color-card-foreground:     hsl(var(--card-foreground));
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-
-  @keyframes accordion-down {
-    from { height: 0; }
-    to   { height: var(--radix-accordion-content-height); }
-  }
-  @keyframes accordion-up {
-    from { height: var(--radix-accordion-content-height); }
-    to   { height: 0; }
-  }
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up:   accordion-up   0.2s ease-out;
 }
 
 /* ─────────────────────────────────────────────────────────
@@ -104,10 +43,6 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--border-color);
-  }
-
-  * {
-    @apply border-border;
   }
 
   html {
@@ -133,4 +68,3 @@
   input[type='number']::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
   input[type='number'] { -moz-appearance: textfield; }
 }
-
