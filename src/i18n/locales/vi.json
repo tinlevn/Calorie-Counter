@@ -21,6 +21,59 @@
     "hint": "Chọn một hoạt động để tính toán",
     "addButton": "Thêm vào Nhật Ký"
   },
+  "disclaimer": {
+    "buttonAria": "Lưu ý giới hạn của công thức",
+    "tooltip": "Giới hạn của công thức",
+    "title": "Giới hạn của công thức",
+    "subtitle": "Ngay cả khi bạn biết cân nặng, thời gian và giá trị MET chính xác của hoạt động, kết quả vẫn chỉ là một con số ước tính. Lượng calo tiêu hao thực tế thay đổi dựa trên các yếu tố mà công thức không thể đo lường:",
+    "factors": {
+      "bodyComposition": {
+        "title": "Thành phần cơ thể",
+        "desc": "Mô cơ đốt cháy nhiều calo hơn mô mỡ khi vận động. Hai người cùng nặng 180 lbs (khoảng 81,6 kg) sẽ đốt cháy calo khác nhau nếu một người là vận động viên thể hình còn người kia chủ yếu ít vận động."
+      },
+      "fitnessLevel": {
+        "title": "Mức độ thể lực",
+        "desc": "Cơ thể bạn càng cân đối và khỏe mạnh, khả năng vận động và chuyển hóa của cơ thể càng trở nên hiệu quả hơn. Một người chạy bộ dày dạn kinh nghiệm sẽ đốt cháy ít calo hơn khi chạy một dặm trong 9 phút so với một người mới bắt đầu có cùng cân nặng, đơn giản vì cơ thể người mới phải hoạt động vất vả hơn nhiều để hoàn thành bài tập."
+      },
+      "heartRate": {
+        "title": "Nhịp tim",
+        "desc": "Nhịp tim phản ánh mức độ gắng sức sát thực tế hơn nhiều so với chỉ số MET. Đó là lý do tại sao dây đeo ngực đo nhịp tim hoặc đồng hồ thông minh theo dõi nhịp tim liên tục thường cung cấp ước tính calo chính xác hơn so với các công thức đơn giản chỉ dựa trên cân nặng/thời gian."
+      }
+    },
+    "hoverHint": "Nhấp để xem giải thích đầy đủ",
+    "close": "Đã hiểu"
+  },
+  "metInfo": {
+    "badgeAria": "Tìm hiểu về chỉ số MET",
+    "tooltip": "Chỉ số MET là gì? (Đương lượng chuyển hóa)",
+    "title": "Chỉ số MET là gì?",
+    "abbreviation": "Metabolic Equivalent of Task (Đương lượng chuyển hóa)",
+    "definition": "MET là đơn vị sinh lý chuẩn hóa biểu thị mức tiêu hao năng lượng của các hoạt động thể chất khác nhau.",
+    "baseline": "1 MET tương đương với mức năng lượng tiêu hao khi ngồi nghỉ yên tĩnh (khoảng 1 kcal cho mỗi kg cân nặng trong 1 giờ, hoặc 3,5 ml O₂/kg/phút).",
+    "formulaTitle": "Cách tính lượng Calo tiêu thụ",
+    "formula": "Calo = MET × Cân nặng (kg) × Thời gian (giờ)",
+    "scaleTitle": "Thang đo cường độ hoạt động",
+    "scale": {
+      "sedentary": {
+        "label": "Ít vận động (< 1.5 MET)",
+        "examples": "Ngồi yên, xem TV, nằm nghỉ"
+      },
+      "light": {
+        "label": "Nhẹ (1.5 – 2.9 MET)",
+        "examples": "Đi bộ chậm, làm việc nhà nhẹ, làm việc văn phòng"
+      },
+      "moderate": {
+        "label": "Vừa phải (3.0 – 5.9 MET)",
+        "examples": "Đi bộ nhanh, đạp xe thư giãn, quần vợt đánh đôi"
+      },
+      "vigorous": {
+        "label": "Cường độ cao (≥ 6.0 MET)",
+        "examples": "Chạy bộ, bơi lội theo hiệp, đá bóng, nhảy dây"
+      }
+    },
+    "sourceNote": "Dữ liệu chính thức từ Bảng tổng hợp hoạt động thể chất người lớn 2024 (Đại học Bang Arizona & Viện Ung thư Quốc gia Hoa Kỳ).",
+    "close": "Đã hiểu"
+  },
   "dailyLog": {
     "title": "Nhật Ký Hôm Nay",
     "empty": "Nhật ký của bạn đang trống.",
@@ -62,8 +115,8 @@
     "Weight training (90 sec rest)": "Tập tạ (nghỉ 90 giây)",
     "Bicycling, 10 mph": "Đạp xe, 16 km/h",
     "Bicycling, 13 mph": "Đạp xe, 21 km/h",
-    "Canoeing, 2.5 mph": "Chèo thuyền, 4 km/h",
-    "Canoeing, 4.0 mph": "Chèo thuyền, 6,4 km/h",
+    "Canoeing, 2.5 mph": "Chèo xuồng, 4 km/h",
+    "Canoeing, 4.0 mph": "Chèo xuồng, 6,4 km/h",
     "Rowing (leisurely)": "Chèo thuyền (nhẹ nhàng)",
     "Scuba diving": "Lặn biển",
     "Swimming (25 yards/min)": "Bơi lội (25 thước/phút)",
@@ -113,6 +166,71 @@
     "Washing the car": "Rửa xe",
     "Waxing the car": "Đánh bóng xe",
     "Weeding": "Nhổ cỏ dại",
-    "Window cleaning": "Lau cửa sổ"
+    "Window cleaning": "Lau cửa sổ",
+    "Jumping rope (moderate pace, 100-120 skips/min)": "Nhảy dây (nhịp độ vừa, 100-120 nhịp/phút)",
+    "High-Intensity Interval Training (HIIT / Tabata)": "Tập ngắt quãng cường độ cao (HIIT / Tabata)",
+    "Elliptical trainer (moderate effort)": "Máy tập elip (cường độ vừa)",
+    "Elliptical trainer (vigorous effort)": "Máy tập elip (cường độ cao)",
+    "Zumba (group class)": "Nhảy Zumba (lớp tập nhóm)",
+    "Calisthenics (pushups, pullups, burpees, vigorous)": "Calisthenics (chống đẩy, hít xà, burpees, cường độ cao)",
+    "Calisthenics (pushups, situps, lunges, moderate)": "Calisthenics (chống đẩy, gập bụng, chùng chân, vừa phải)",
+    "Water aerobics / Water calisthenics": "Thể dục nhịp điệu dưới nước",
+    "Walking (brisk, 3.5 mph)": "Đi bộ nhanh, 5,6 km/h",
+    "Walking (treadmill desk, 1.0-2.0 mph)": "Đi bộ trên máy chạy bàn làm việc (1,6 - 3,2 km/h)",
+    "Walking with stroller (pushing child)": "Đi bộ đẩy xe đẩy em bé",
+    "Climbing hills (hiking uphill, 5-10% grade)": "Leo dốc / đi bộ đường đồi dốc (độ dốc 5-10%)",
+    "Trail running / Cross country": "Chạy đường mòn / chạy băng đồng",
+    "Running (sprint / intervals, 11 mph)": "Chạy nước rút / ngắt quãng, 17,7 km/h",
+    "Circuit training (kettlebells, vigorous)": "Tập tạ bình vôi / Kettlebell (cường độ cao)",
+    "Circuit training (body weight exercises)": "Tập vòng circuit (trọng lượng cơ thể)",
+    "Pilates (traditional mat)": "Pilates (thảm truyền thống)",
+    "Pilates (general equipment / reformer)": "Pilates (dụng cụ / máy reformer)",
+    "Yoga (Hatha)": "Yoga (Hatha cổ điển)",
+    "Yoga (Power / Vinyasa / High intensity)": "Yoga (Power / Vinyasa / cường độ cao)",
+    "Stretching (mild / flexibility)": "Giãn cơ (nhẹ nhàng / tăng độ dẻo dai)",
+    "Stationary bicycling (general)": "Đạp xe tại chỗ (nói chung)",
+    "Stationary bicycling (RPM / Spin class)": "Đạp xe tại chỗ (lớp đạp xe Spinning / RPM)",
+    "Stationary bicycling (light effort, 50W)": "Đạp xe tại chỗ (nhẹ nhàng, 50W)",
+    "Kayaking (moderate effort)": "Chèo thuyền Kayak (vừa phải)",
+    "Kayaking (racing / competition)": "Chèo thuyền Kayak (thi đấu / nước rút)",
+    "Stand-up paddleboarding (SUP, moderate)": "Chèo ván đứng SUP (vừa phải)",
+    "Stand-up paddleboarding (SUP, vigorous)": "Chèo ván đứng SUP (nhanh / cường độ cao)",
+    "Surfing (body or board)": "Lướt sóng (ván hoặc người)",
+    "Windsurfing / Kitesurfing": "Lướt ván buồm / lướt ván diều",
+    "Water polo": "Bóng nước (Water polo)",
+    "Paddleball / Pickleball": "Pickleball / Bóng vợt",
+    "Beach Volleyball (in sand)": "Bóng chuyền bãi biển",
+    "Boxing (punching bag)": "Quyền anh (đấm bao cát)",
+    "Boxing (in ring / sparring)": "Quyền anh (đấu trên võ đài)",
+    "Martial Arts (Karate, Kickboxing, Muay Thai)": "Võ thuật (Karate, Kickboxing, Muay Thai)",
+    "Judo / Jujitsu": "Judo / Nhu thuật Jujitsu",
+    "Taekwondo (combat simulation)": "Taekwondo (thi đấu đối kháng)",
+    "Ultimate Frisbee": "Đĩa bay Ultimate Frisbee",
+    "Frisbee (recreational catch)": "Ném đĩa bay (giải trí)",
+    "Baseball / Softball (play)": "Bóng chày / Bóng mềm",
+    "Ice Hockey": "Khúc côn cầu trên băng",
+    "Field Hockey": "Khúc côn cầu trên cỏ",
+    "Rugby": "Bóng bầu dục (Rugby)",
+    "Archery (non-hunting)": "Bắn cung",
+    "Horseback riding (general)": "Cưỡi ngựa",
+    "Rock climbing / Bouldering": "Leo khối đá / Bouldering",
+    "Rock climbing (ascending rock, general)": "Leo núi đá (nói chung)",
+    "Skateboarding (recreational)": "Trượt ván (giải trí)",
+    "Skateboarding (vigorous / park)": "Trượt ván (cường độ cao / sân trượt)",
+    "Rollerblading / In-line skating (recreational)": "Trượt patin / Giày trượt một hàng bánh (thư giãn)",
+    "Rollerblading / In-line skating (moderate training)": "Trượt patin (tập luyện vừa phải)",
+    "Snowboarding (moderate effort)": "Trượt ván trên tuyết (Snowboarding)",
+    "Ice skating (recreational)": "Trượt băng (thư giãn)",
+    "Ice skating (vigorous / speed)": "Trượt băng (tốc độ / cường độ cao)",
+    "Ballet / Modern Dance": "Múa ba-lê / Múa hiện đại",
+    "Salsa / Merengue / Latin Dance": "Khiêu vũ Latin (Salsa / Merengue)",
+    "Hip-Hop / Breakdancing / Funk": "Nhảy Hip-Hop / Breakdance",
+    "Active Video Games / VR Fitness (vigorous)": "Trò chơi vận động thực tế ảo VR Fitness",
+    "Active Video Games (moderate exergaming)": "Trò chơi điện tử vận động thể chất",
+    "Moving furniture / Carrying heavy boxes": "Chuyển đồ đạc / Vác thùng nặng",
+    "Moving household items upstairs": "Khuân vác đồ đạc lên lầu",
+    "Painting walls / House painting": "Sơn tường / Sơn nhà",
+    "Carpentry / Woodworking": "Làm mộc / Chế tác gỗ",
+    "Chopping & splitting firewood": "Chặt và chẻ củi"
   }
 }

@@ -21,6 +21,59 @@
     "hint": "Select an activity to calculate",
     "addButton": "Add to Daily Log"
   },
+  "disclaimer": {
+    "buttonAria": "Formula limits disclaimer",
+    "tooltip": "The Limits of the Formula",
+    "title": "The Limits of the Formula",
+    "subtitle": "Even if you know your weight, duration, and the exact MET value of the activity, the result is still just an estimate. True caloric expenditure varies based on variables the formula cannot see:",
+    "factors": {
+      "bodyComposition": {
+        "title": "Body Composition",
+        "desc": "Muscle tissue burns more calories during exercise than fat tissue. Two people weighing 180 lbs will burn calories differently if one is a bodybuilder and the other is mostly sedentary."
+      },
+      "fitnessLevel": {
+        "title": "Fitness Level",
+        "desc": "The more fit you are, the more mechanically and metabolically efficient your body becomes. A seasoned runner will burn fewer calories running a 9-minute mile than a beginner of the exact same weight, simply because the beginner's body has to work much harder to perform the task."
+      },
+      "heartRate": {
+        "title": "Heart Rate",
+        "desc": "Heart rate is a much closer proxy for effort than METs, which is why chest strap monitors or smartwatches that track continuous heart rate generally provide more accurate caloric estimates than simple weight/time formulas."
+      }
+    },
+    "hoverHint": "Click to view full explanation",
+    "close": "Got it"
+  },
+  "metInfo": {
+    "badgeAria": "Learn what MET means",
+    "tooltip": "What is MET? (Metabolic Equivalent of Task)",
+    "title": "What is a MET?",
+    "abbreviation": "Metabolic Equivalent of Task",
+    "definition": "A MET is a standardized physiological measure expressing the energy cost of physical activities.",
+    "baseline": "1 MET represents the energy expended while sitting quietly at rest (approx. 1 kcal per kg of body weight per hour, or 3.5 ml O₂/kg/min).",
+    "formulaTitle": "How Calories are Calculated",
+    "formula": "Calories = MET × Weight (kg) × Duration (hours)",
+    "scaleTitle": "Intensity Scale",
+    "scale": {
+      "sedentary": {
+        "label": "Sedentary (< 1.5 METs)",
+        "examples": "Sitting quietly, watching TV, resting"
+      },
+      "light": {
+        "label": "Light (1.5 – 2.9 METs)",
+        "examples": "Slow walking, light housework, desk work"
+      },
+      "moderate": {
+        "label": "Moderate (3.0 – 5.9 METs)",
+        "examples": "Brisk walking, recreational bicycling, tennis doubles"
+      },
+      "vigorous": {
+        "label": "Vigorous (≥ 6.0 METs)",
+        "examples": "Jogging, running, lap swimming, soccer, jumping rope"
+      }
+    },
+    "sourceNote": "Official data from the 2024 Adult Compendium of Physical Activities (Arizona State University & NCI).",
+    "close": "Got it"
+  },
   "dailyLog": {
     "title": "Daily Log",
     "empty": "Your log is empty.",
@@ -113,6 +166,71 @@
     "Washing the car": "Washing the car",
     "Waxing the car": "Waxing the car",
     "Weeding": "Weeding",
-    "Window cleaning": "Window cleaning"
+    "Window cleaning": "Window cleaning",
+    "Jumping rope (moderate pace, 100-120 skips/min)": "Jumping rope (moderate pace, 100-120 skips/min)",
+    "High-Intensity Interval Training (HIIT / Tabata)": "High-Intensity Interval Training (HIIT / Tabata)",
+    "Elliptical trainer (moderate effort)": "Elliptical trainer (moderate effort)",
+    "Elliptical trainer (vigorous effort)": "Elliptical trainer (vigorous effort)",
+    "Zumba (group class)": "Zumba (group class)",
+    "Calisthenics (pushups, pullups, burpees, vigorous)": "Calisthenics (pushups, pullups, burpees, vigorous)",
+    "Calisthenics (pushups, situps, lunges, moderate)": "Calisthenics (pushups, situps, lunges, moderate)",
+    "Water aerobics / Water calisthenics": "Water aerobics / Water calisthenics",
+    "Walking (brisk, 3.5 mph)": "Walking (brisk, 3.5 mph)",
+    "Walking (treadmill desk, 1.0-2.0 mph)": "Walking (treadmill desk, 1.0-2.0 mph)",
+    "Walking with stroller (pushing child)": "Walking with stroller (pushing child)",
+    "Climbing hills (hiking uphill, 5-10% grade)": "Climbing hills (hiking uphill, 5-10% grade)",
+    "Trail running / Cross country": "Trail running / Cross country",
+    "Running (sprint / intervals, 11 mph)": "Running (sprint / intervals, 11 mph)",
+    "Circuit training (kettlebells, vigorous)": "Circuit training (kettlebells, vigorous)",
+    "Circuit training (body weight exercises)": "Circuit training (body weight exercises)",
+    "Pilates (traditional mat)": "Pilates (traditional mat)",
+    "Pilates (general equipment / reformer)": "Pilates (general equipment / reformer)",
+    "Yoga (Hatha)": "Yoga (Hatha)",
+    "Yoga (Power / Vinyasa / High intensity)": "Yoga (Power / Vinyasa / High intensity)",
+    "Stretching (mild / flexibility)": "Stretching (mild / flexibility)",
+    "Stationary bicycling (general)": "Stationary bicycling (general)",
+    "Stationary bicycling (RPM / Spin class)": "Stationary bicycling (RPM / Spin class)",
+    "Stationary bicycling (light effort, 50W)": "Stationary bicycling (light effort, 50W)",
+    "Kayaking (moderate effort)": "Kayaking (moderate effort)",
+    "Kayaking (racing / competition)": "Kayaking (racing / competition)",
+    "Stand-up paddleboarding (SUP, moderate)": "Stand-up paddleboarding (SUP, moderate)",
+    "Stand-up paddleboarding (SUP, vigorous)": "Stand-up paddleboarding (SUP, vigorous)",
+    "Surfing (body or board)": "Surfing (body or board)",
+    "Windsurfing / Kitesurfing": "Windsurfing / Kitesurfing",
+    "Water polo": "Water polo",
+    "Paddleball / Pickleball": "Paddleball / Pickleball",
+    "Beach Volleyball (in sand)": "Beach Volleyball (in sand)",
+    "Boxing (punching bag)": "Boxing (punching bag)",
+    "Boxing (in ring / sparring)": "Boxing (in ring / sparring)",
+    "Martial Arts (Karate, Kickboxing, Muay Thai)": "Martial Arts (Karate, Kickboxing, Muay Thai)",
+    "Judo / Jujitsu": "Judo / Jujitsu",
+    "Taekwondo (combat simulation)": "Taekwondo (combat simulation)",
+    "Ultimate Frisbee": "Ultimate Frisbee",
+    "Frisbee (recreational catch)": "Frisbee (recreational catch)",
+    "Baseball / Softball (play)": "Baseball / Softball (play)",
+    "Ice Hockey": "Ice Hockey",
+    "Field Hockey": "Field Hockey",
+    "Rugby": "Rugby",
+    "Archery (non-hunting)": "Archery (non-hunting)",
+    "Horseback riding (general)": "Horseback riding (general)",
+    "Rock climbing / Bouldering": "Rock climbing / Bouldering",
+    "Rock climbing (ascending rock, general)": "Rock climbing (ascending rock, general)",
+    "Skateboarding (recreational)": "Skateboarding (recreational)",
+    "Skateboarding (vigorous / park)": "Skateboarding (vigorous / park)",
+    "Rollerblading / In-line skating (recreational)": "Rollerblading / In-line skating (recreational)",
+    "Rollerblading / In-line skating (moderate training)": "Rollerblading / In-line skating (moderate training)",
+    "Snowboarding (moderate effort)": "Snowboarding (moderate effort)",
+    "Ice skating (recreational)": "Ice skating (recreational)",
+    "Ice skating (vigorous / speed)": "Ice skating (vigorous / speed)",
+    "Ballet / Modern Dance": "Ballet / Modern Dance",
+    "Salsa / Merengue / Latin Dance": "Salsa / Merengue / Latin Dance",
+    "Hip-Hop / Breakdancing / Funk": "Hip-Hop / Breakdancing / Funk",
+    "Active Video Games / VR Fitness (vigorous)": "Active Video Games / VR Fitness (vigorous)",
+    "Active Video Games (moderate exergaming)": "Active Video Games (moderate exergaming)",
+    "Moving furniture / Carrying heavy boxes": "Moving furniture / Carrying heavy boxes",
+    "Moving household items upstairs": "Moving household items upstairs",
+    "Painting walls / House painting": "Painting walls / House painting",
+    "Carpentry / Woodworking": "Carpentry / Woodworking",
+    "Chopping & splitting firewood": "Chopping & splitting firewood"
   }
 }

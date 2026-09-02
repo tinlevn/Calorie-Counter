@@ -35,7 +35,20 @@ export function ActivityButton({ activity, isSelected, onSelect }: Props) {
         }
       }}
     >
-      {displayName}
+      <div className="flex items-center justify-between gap-2">
+        <span>{displayName}</span>
+        {activity.met && (
+          <span
+            className="text-xs px-1.5 py-0.5 rounded font-mono shrink-0"
+            style={{
+              background: isSelected ? 'rgba(139,168,136,0.2)' : 'rgba(232,220,200,0.08)',
+              color: isSelected ? 'var(--accent-matcha)' : 'var(--text-muted)',
+            }}
+          >
+            {activity.met} MET
+          </span>
+        )}
+      </div>
     </button>
   )
 }

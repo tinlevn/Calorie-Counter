@@ -30,24 +30,31 @@ function App() {
   const [log, setLog] = useState<LogEntry[]>([])
 
   // ── Derived values ────────────────────────────────────────────────────────
-  const weightInLbs = useMemo(() => {
+  const weightKg = useMemo(() => {
     if (weight === '') return 0
-    return weightUnit === 'lbs' ? (weight as number) : (weight as number) * 2.20462
+    return weightUnit === 'kg' ? (weight as number) : (weight as number) / 2.20462
   }, [weight, weightUnit])
 
+  const durationHours = useMemo(() => {
+    if (durationValue === '') return 0
+    return durationUnit === 'hr' ? (durationValue as number) : (durationValue as number) / 60
+  }, [durationValue, durationUnit])
+
+  const currentCalories = useMemo(() => {
+    if (!selectedActivity || !weightKg || !durationHours) return 0
+    const met = selectedActivity.met
+    if (met) {
+      return Math.round(met * (weightKg as number) * (durationHours as number))
+    }
+    // fallback to legacy calsPerMinutePerLb if MET not available
+    return Math.round(selectedActivity.calsPerMinutePerLb * (weightKg as number) * 2.20462 * (durationHours as number) * 60)
+  }, [selectedActivity, weightKg, durationHours])
   const durationInMinutes = useMemo(() => {
     if (durationValue === '') return 0
     return durationUnit === 'hr'
       ? (durationValue as number) * 60
       : (durationValue as number)
   }, [durationValue, durationUnit])
-
-  const currentCalories = useMemo(() => {
-    if (!selectedActivity || !weightInLbs || !durationInMinutes) return 0
-    return Math.round(
-      selectedActivity.calsPerMinutePerLb * weightInLbs * durationInMinutes
-    )
-  }, [selectedActivity, weightInLbs, durationInMinutes])
 
   // ── Duration label (passed to CalorieBurnCard + stored in log) ────────────
   const durationLabel = useMemo(() => {

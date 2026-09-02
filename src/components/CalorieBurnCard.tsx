@@ -1,6 +1,8 @@
 import { Plus } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import type { Activity } from '../data/activities'
+import { DisclaimerModal } from './DisclaimerModal'
+import { MetInfoModal } from './MetInfoModal'
 
 type Props = {
   calories: number
@@ -35,12 +37,25 @@ export function CalorieBurnCard({ calories, selectedActivity, durationLabel, onA
       />
 
       <div className="relative z-10">
-        <h3
-          className="font-semibold mb-1 text-sm uppercase"
-          style={{ color: 'rgba(255,240,210,0.75)', letterSpacing: '0.12em' }}
-        >
-          {t('burnCard.label')}
-        </h3>
+        <div className="flex items-center justify-between mb-1">
+          <div className="flex items-center gap-2">
+            <h3
+              className="font-semibold text-sm uppercase"
+              style={{ color: 'rgba(255,240,210,0.75)', letterSpacing: '0.12em' }}
+            >
+              {t('burnCard.label')}
+            </h3>
+            {selectedActivity?.met && (
+              <MetInfoModal met={selectedActivity.met} />
+            )}
+          </div>
+          <div className="flex items-center gap-1.5">
+            {!selectedActivity?.met && (
+              <MetInfoModal />
+            )}
+            <DisclaimerModal />
+          </div>
+        </div>
 
         <div className="flex items-baseline gap-2 mb-1">
           <span
