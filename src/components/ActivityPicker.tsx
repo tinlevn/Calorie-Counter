@@ -64,11 +64,14 @@ export function ActivityPicker({ selectedActivity, onSelect }: Props) {
       {/* Search bar */}
       <div className="relative mb-3">
         <Search
-          className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2"
+          className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
           style={{ color: 'var(--text-muted)' }}
+          aria-hidden="true"
         />
         <input
+          id="activity-search"
           type="text"
+          aria-label={t('activityPicker.searchPlaceholder')}
           placeholder={t('activityPicker.searchPlaceholder')}
           value={search}
           onChange={e => setSearch(e.target.value)}
@@ -84,6 +87,8 @@ export function ActivityPicker({ selectedActivity, onSelect }: Props) {
         />
         {search && (
           <button
+            type="button"
+            aria-label="Clear search"
             onClick={() => setSearch('')}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-xs px-1.5 py-0.5 rounded"
             style={{ color: 'var(--text-muted)', background: 'rgba(232,220,200,0.08)' }}

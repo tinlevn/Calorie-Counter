@@ -41,6 +41,7 @@ export function LogEntryRow({ entry, onRemove }: Props) {
       </div>
 
       <button
+        type="button"
         onClick={() => onRemove(entry.id)}
         className="p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all"
         style={{ color: 'var(--text-muted)' }}
@@ -52,6 +53,7 @@ export function LogEntryRow({ entry, onRemove }: Props) {
           e.currentTarget.style.color = 'var(--text-muted)'
           e.currentTarget.style.background = 'transparent'
         }}
+        aria-label={`Remove ${displayName}`}
         title="Remove"
       >
         <Trash2 className="w-4 h-4" />

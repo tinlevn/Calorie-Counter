@@ -42,7 +42,7 @@ export function DetailsCard({
       <div className="grid grid-cols-2 gap-4">
         {/* ── Weight ── */}
         <div className="space-y-2">
-          <label className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
+          <label htmlFor="weight-input" className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
             {t('details.bodyWeight')}
           </label>
           <div
@@ -52,6 +52,7 @@ export function DetailsCard({
             onBlur={e => (e.currentTarget.style.borderColor = 'var(--border-color)')}
           >
             <input
+              id="weight-input"
               type="number"
               value={weight}
               onChange={e => onWeightChange(e.target.value === '' ? '' : Number(e.target.value))}
@@ -71,6 +72,8 @@ export function DetailsCard({
               {(['kg', 'lbs'] as const).map(u => (
                 <button
                   key={u}
+                  type="button"
+                  aria-label={`Select ${u}`}
                   className="px-3 text-sm font-semibold transition-colors"
                   style={{
                     color: weightUnit === u ? 'var(--accent-matcha)' : 'var(--text-muted)',
@@ -87,7 +90,7 @@ export function DetailsCard({
 
         {/* ── Duration ── */}
         <div className="space-y-2">
-          <label className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
+          <label htmlFor="duration-input" className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
             {t('details.duration')}
           </label>
           <div
@@ -100,6 +103,7 @@ export function DetailsCard({
               <Clock className="w-4 h-4 flex-shrink-0" />
             </div>
             <input
+              id="duration-input"
               type="number"
               value={durationValue}
               onChange={e =>
@@ -122,6 +126,8 @@ export function DetailsCard({
               {(['min', 'hr'] as const).map(u => (
                 <button
                   key={u}
+                  type="button"
+                  aria-label={`Select ${u}`}
                   className="px-3 text-sm font-semibold transition-colors"
                   style={{
                     color: durationUnit === u ? 'var(--accent-matcha)' : 'var(--text-muted)',

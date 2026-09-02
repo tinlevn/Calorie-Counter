@@ -70,6 +70,7 @@ export function CalorieBurnCard({ calories, selectedActivity, durationLabel, onA
         )}
 
         <button
+          type="button"
           onClick={onAdd}
           disabled={!canAdd}
           className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm transition-all"

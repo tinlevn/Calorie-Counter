@@ -40,6 +40,9 @@ export function CategoryGroup({
     <div>
       {/* Header row */}
       <button
+        type="button"
+        aria-expanded={isOpen}
+        aria-label={`${categoryDisplayName} (${items.length})`}
         onClick={() => onToggle(category)}
         className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all"
         style={{

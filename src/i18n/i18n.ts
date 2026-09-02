@@ -19,4 +19,12 @@ i18n
     },
   })
 
+// Keep <html> lang attribute in sync
+if (typeof document !== 'undefined') {
+  document.documentElement.lang = savedLanguage
+  i18n.on('languageChanged', (lng) => {
+    document.documentElement.lang = lng
+  })
+}
+
 export default i18n

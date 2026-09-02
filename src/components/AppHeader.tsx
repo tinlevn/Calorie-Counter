@@ -23,6 +23,8 @@ export function AppHeader() {
       >
         <Globe className="w-3.5 h-3.5 ml-1.5" style={{ color: 'var(--text-muted)' }} />
         <button
+          type="button"
+          aria-label="Chuyển sang tiếng Việt"
           onClick={() => changeLanguage('vi')}
           className="px-2 py-1 text-xs font-semibold rounded-lg transition-colors"
           style={{
@@ -33,6 +35,8 @@ export function AppHeader() {
           VI
         </button>
         <button
+          type="button"
+          aria-label="Switch to English"
           onClick={() => changeLanguage('en')}
           className="px-2 py-1 text-xs font-semibold rounded-lg transition-colors"
           style={{

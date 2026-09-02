@@ -13,6 +13,8 @@ export function ActivityButton({ activity, isSelected, onSelect }: Props) {
 
   return (
     <button
+      type="button"
+      aria-pressed={isSelected}
       onClick={() => onSelect(activity)}
       className="w-full text-left px-3 py-2 rounded-lg transition-all text-sm font-medium"
       style={{
