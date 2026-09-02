@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Search, Activity as ActivityIcon } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { activities, ACTIVITY_CATEGORIES, type Activity } from '../data/activities'
 import { ActivityButton } from './ActivityButton'
 import { CategoryGroup } from './CategoryGroup'
@@ -10,6 +11,7 @@ type Props = {
 }
 
 export function ActivityPicker({ selectedActivity, onSelect }: Props) {
+  const { t } = useTranslation()
   const [search, setSearch] = useState('')
   const [openCategories, setOpenCategories] = useState<Set<string>>(
     new Set(['Cardio & Aerobics', 'Running & Walking'])
@@ -20,8 +22,12 @@ export function ActivityPicker({ selectedActivity, onSelect }: Props) {
   const filteredActivities = useMemo(() => {
     if (!search.trim()) return activities
     const lower = search.toLowerCase()
-    return activities.filter(a => a.name.toLowerCase().includes(lower))
-  }, [search])
+    return activities.filter(a => {
+      const enName = a.name.toLowerCase()
+      const trName = t(`activities.${a.name}`, a.name).toLowerCase()
+      return enName.includes(lower) || trName.includes(lower)
+    })
+  }, [search, t])
 
   const groupedActivities = useMemo(
     () =>
@@ -52,7 +58,7 @@ export function ActivityPicker({ selectedActivity, onSelect }: Props) {
     >
       <h2 className="text-xl font-bold flex items-center gap-2 mb-4">
         <ActivityIcon className="w-5 h-5" style={{ color: 'var(--accent-matcha)' }} />
-        Select Activity
+        {t('activityPicker.title')}
       </h2>
 
       {/* Search bar */}
@@ -63,7 +69,7 @@ export function ActivityPicker({ selectedActivity, onSelect }: Props) {
         />
         <input
           type="text"
-          placeholder="Search all activities..."
+          placeholder={t('activityPicker.searchPlaceholder')}
           value={search}
           onChange={e => setSearch(e.target.value)}
           className="w-full pl-9 pr-8 py-2.5 rounded-xl outline-none transition-all"
@@ -97,7 +103,7 @@ export function ActivityPicker({ selectedActivity, onSelect }: Props) {
                 className="text-center py-8 text-sm"
                 style={{ color: 'var(--text-muted)' }}
               >
-                No activities found for "{search}"
+                {t('activityPicker.noResults', { query: search })}
               </p>
             ) : (
               filteredActivities.map((activity, i) => (

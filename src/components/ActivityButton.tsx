@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import type { Activity } from '../data/activities'
 
 type Props = {
@@ -7,6 +8,9 @@ type Props = {
 }
 
 export function ActivityButton({ activity, isSelected, onSelect }: Props) {
+  const { t } = useTranslation()
+  const displayName = t(`activities.${activity.name}`, activity.name)
+
   return (
     <button
       onClick={() => onSelect(activity)}
@@ -29,7 +33,7 @@ export function ActivityButton({ activity, isSelected, onSelect }: Props) {
         }
       }}
     >
-      {activity.name}
+      {displayName}
     </button>
   )
 }

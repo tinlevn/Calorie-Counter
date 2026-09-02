@@ -1,4 +1,5 @@
 import { Activity } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import type { LogEntry } from '../types'
 import { LogEntryRow } from './LogEntryRow'
 
@@ -8,6 +9,7 @@ type Props = {
 }
 
 export function DailyLog({ log, onRemove }: Props) {
+  const { t } = useTranslation()
   const totalCalories = log.reduce((acc, e) => acc + e.calories, 0)
 
   return (
@@ -20,7 +22,7 @@ export function DailyLog({ log, onRemove }: Props) {
       }}
     >
       <h2 className="text-lg font-bold mb-4 flex items-center justify-between">
-        <span>Daily Log</span>
+        <span>{t('dailyLog.title')}</span>
         <span
           className="text-xs font-semibold px-2.5 py-1 rounded-lg"
           style={{
@@ -30,7 +32,7 @@ export function DailyLog({ log, onRemove }: Props) {
             fontVariantNumeric: 'tabular-nums',
           }}
         >
-          {totalCalories.toLocaleString()} kcal
+          {totalCalories.toLocaleString()} {t('dailyLog.kcal')}
         </span>
       </h2>
 
@@ -43,7 +45,7 @@ export function DailyLog({ log, onRemove }: Props) {
             <Activity className="w-5 h-5" style={{ color: 'var(--text-muted)' }} />
           </div>
           <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
-            Your log is empty.
+            {t('dailyLog.empty')}
           </p>
         </div>
       ) : (

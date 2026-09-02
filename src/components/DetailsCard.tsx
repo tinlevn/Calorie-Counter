@@ -1,4 +1,5 @@
 import { Weight, Clock } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import type { WeightUnit, DurationUnit } from '../types'
 
 type Props = {
@@ -22,6 +23,8 @@ export function DetailsCard({
   onDurationChange,
   onDurationUnitChange,
 }: Props) {
+  const { t } = useTranslation()
+
   return (
     <div
       className="rounded-3xl p-6"
@@ -33,14 +36,14 @@ export function DetailsCard({
     >
       <h2 className="text-xl font-bold flex items-center gap-2 mb-6">
         <Weight className="w-5 h-5" style={{ color: 'var(--accent-hojicha)' }} />
-        Your Details
+        {t('details.title')}
       </h2>
 
       <div className="grid grid-cols-2 gap-4">
         {/* ── Weight ── */}
         <div className="space-y-2">
           <label className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
-            Body Weight
+            {t('details.bodyWeight')}
           </label>
           <div
             className="flex rounded-xl overflow-hidden"
@@ -85,7 +88,7 @@ export function DetailsCard({
         {/* ── Duration ── */}
         <div className="space-y-2">
           <label className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
-            Duration
+            {t('details.duration')}
           </label>
           <div
             className="flex rounded-xl overflow-hidden"
@@ -138,7 +141,7 @@ export function DetailsCard({
               className="text-xs"
               style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
             >
-              = {Math.round((durationValue as number) * 60)} minutes
+              {t('details.minutesHint', { minutes: Math.round((durationValue as number) * 60) })}
             </p>
           )}
         </div>

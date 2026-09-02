@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { activities } from './data/activities'
+import { useTranslation } from 'react-i18next'
 import type { Activity } from './data/activities'
 import type { LogEntry, WeightUnit, DurationUnit } from './types'
 
@@ -15,6 +15,8 @@ import { DailyLog }        from './components/DailyLog'
 // Units are normalised to lbs + minutes before calculation.
 
 function App() {
+  const { t } = useTranslation()
+
   // ── Inputs ────────────────────────────────────────────────────────────────
   const [weight,       setWeight]       = useState<number | ''>(70)
   const [weightUnit,   setWeightUnit]   = useState<WeightUnit>('kg')
@@ -48,12 +50,14 @@ function App() {
   }, [selectedActivity, weightInLbs, durationInMinutes])
 
   // ── Duration label (passed to CalorieBurnCard + stored in log) ────────────
-  const durationLabel =
-    durationValue === ''
-      ? '—'
-      : durationUnit === 'hr'
-      ? `${durationValue}h (${Math.round((durationValue as number) * 60)}min)`
-      : `${durationValue}min`
+  const durationLabel = useMemo(() => {
+    if (durationValue === '') return '—'
+    const minStr = t('details.min', 'min')
+    const hrStr = t('details.hr', 'h')
+    return durationUnit === 'hr'
+      ? `${durationValue} ${hrStr} (${Math.round((durationValue as number) * 60)} ${minStr})`
+      : `${durationValue} ${minStr}`
+  }, [durationValue, durationUnit, t])
 
   // ── Log actions ───────────────────────────────────────────────────────────
   const addToLog = () => {

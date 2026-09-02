@@ -1,4 +1,5 @@
 import { Plus } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import type { Activity } from '../data/activities'
 
 type Props = {
@@ -9,7 +10,11 @@ type Props = {
 }
 
 export function CalorieBurnCard({ calories, selectedActivity, durationLabel, onAdd }: Props) {
+  const { t } = useTranslation()
   const canAdd = !!selectedActivity && calories > 0
+  const activityDisplayName = selectedActivity
+    ? t(`activities.${selectedActivity.name}`, selectedActivity.name)
+    : ''
 
   return (
     <div
@@ -34,7 +39,7 @@ export function CalorieBurnCard({ calories, selectedActivity, durationLabel, onA
           className="font-semibold mb-1 text-sm uppercase"
           style={{ color: 'rgba(255,240,210,0.75)', letterSpacing: '0.12em' }}
         >
-          Estimated Burn
+          {t('burnCard.label')}
         </h3>
 
         <div className="flex items-baseline gap-2 mb-1">
@@ -50,17 +55,17 @@ export function CalorieBurnCard({ calories, selectedActivity, durationLabel, onA
             {calories}
           </span>
           <span className="font-semibold text-lg" style={{ color: 'rgba(255,240,210,0.7)' }}>
-            kcal
+            {t('dailyLog.kcal')}
           </span>
         </div>
 
         {selectedActivity ? (
           <p className="text-sm mb-6" style={{ color: 'rgba(255,240,210,0.6)' }}>
-            {selectedActivity.name} · {durationLabel}
+            {activityDisplayName} · {durationLabel}
           </p>
         ) : (
           <p className="text-sm mb-6" style={{ color: 'rgba(255,240,210,0.5)' }}>
-            Select an activity to calculate
+            {t('burnCard.hint')}
           </p>
         )}
 
@@ -84,7 +89,7 @@ export function CalorieBurnCard({ calories, selectedActivity, durationLabel, onA
           }}
         >
           <Plus className="w-4 h-4" />
-          Add to Daily Log
+          {t('burnCard.addButton')}
         </button>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { ChevronDown } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import type { Activity } from '../data/activities'
 import { ActivityButton } from './ActivityButton'
 
@@ -31,7 +32,9 @@ export function CategoryGroup({
   onToggle,
   onSelect,
 }: Props) {
+  const { t } = useTranslation()
   const hasSelected = items.some(a => a.name === selectedActivityName)
+  const categoryDisplayName = t(`categories.${category}`, category)
 
   return (
     <div>
@@ -58,7 +61,7 @@ export function CategoryGroup({
             className="font-semibold text-sm"
             style={{ color: hasSelected ? 'var(--accent-matcha)' : 'var(--text-primary)' }}
           >
-            {category}
+            {categoryDisplayName}
           </span>
         </span>
 

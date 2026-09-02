@@ -1,4 +1,5 @@
 import { Trash2 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import type { LogEntry } from '../types'
 
 type Props = {
@@ -7,6 +8,9 @@ type Props = {
 }
 
 export function LogEntryRow({ entry, onRemove }: Props) {
+  const { t } = useTranslation()
+  const displayName = t(`activities.${entry.activityName}`, entry.activityName)
+
   return (
     <div
       className="group flex items-center justify-between p-3 rounded-xl transition-all"
@@ -21,8 +25,8 @@ export function LogEntryRow({ entry, onRemove }: Props) {
       }}
     >
       <div>
-        <p className="font-medium text-sm line-clamp-1" title={entry.activityName}>
-          {entry.activityName}
+        <p className="font-medium text-sm line-clamp-1" title={displayName}>
+          {displayName}
         </p>
         <p
           className="text-xs mt-0.5"
@@ -32,7 +36,7 @@ export function LogEntryRow({ entry, onRemove }: Props) {
             fontVariantNumeric: 'tabular-nums',
           }}
         >
-          {entry.durationLabel} · {entry.calories.toLocaleString()} kcal
+          {entry.durationLabel} · {entry.calories.toLocaleString()} {t('dailyLog.kcal')}
         </p>
       </div>
 
