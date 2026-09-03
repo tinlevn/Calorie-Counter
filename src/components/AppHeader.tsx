@@ -16,7 +16,7 @@ export function AppHeader() {
   const isVi = i18n.language.startsWith('vi')
 
   return (
-    <header className="relative text-center space-y-2">
+    <header className="relative text-center space-y-2 pt-1 sm:pt-0">
       {/* Language Switcher */}
       <div
         className="flex items-center gap-1 absolute right-0 top-0 p-1 rounded-xl"
@@ -30,7 +30,7 @@ export function AppHeader() {
           type="button"
           aria-label="Chuyển sang tiếng Việt"
           onClick={() => changeLanguage('vi')}
-          className="px-2 py-1 text-xs font-semibold rounded-lg transition-colors"
+          className="px-2.5 py-1.5 sm:px-2 sm:py-1 text-xs font-semibold rounded-lg transition-colors min-h-[32px] sm:min-h-0 flex items-center justify-center cursor-pointer"
           style={{
             color: isVi ? 'var(--accent-matcha)' : 'var(--text-muted)',
             background: isVi ? 'rgba(139,168,136,0.15)' : 'transparent',
@@ -42,7 +42,7 @@ export function AppHeader() {
           type="button"
           aria-label="Switch to English"
           onClick={() => changeLanguage('en')}
-          className="px-2 py-1 text-xs font-semibold rounded-lg transition-colors"
+          className="px-2.5 py-1.5 sm:px-2 sm:py-1 text-xs font-semibold rounded-lg transition-colors min-h-[32px] sm:min-h-0 flex items-center justify-center cursor-pointer"
           style={{
             color: !isVi ? 'var(--accent-matcha)' : 'var(--text-muted)',
             background: !isVi ? 'rgba(139,168,136,0.15)' : 'transparent',
@@ -59,7 +59,7 @@ export function AppHeader() {
         <Flame className="w-8 h-8" style={{ color: 'var(--accent-passionfruit)' }} />
       </div>
       <h1
-        className="text-3xl md:text-4xl font-extrabold tracking-tight"
+        className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight px-1"
         style={{ letterSpacing: '-0.02em' }}
       >
         {t('header.title')}

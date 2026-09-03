@@ -33,6 +33,9 @@ export function MetInfoModal({ met, className = '' }: Props) {
   }
 
   const handleMouseEnter = () => {
+    if (typeof window !== 'undefined' && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      return
+    }
     if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current)
     updateCoords()
     setShowHoverCard(true)
@@ -82,7 +85,7 @@ export function MetInfoModal({ met, className = '' }: Props) {
         onBlur={handleMouseLeave}
         aria-label={t('metInfo.badgeAria')}
         title={t('metInfo.tooltip')}
-        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-mono font-medium transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-300/60"
+        className="inline-flex items-center gap-1 px-2.5 py-1 sm:py-0.5 min-h-[28px] sm:min-h-0 rounded-full text-xs font-mono font-medium transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-300/60"
         style={{
           background: 'rgba(255, 248, 236, 0.18)',
           color: '#FFF8EC',
@@ -114,7 +117,7 @@ export function MetInfoModal({ met, className = '' }: Props) {
               if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current)
             }}
             onMouseLeave={handleMouseLeave}
-            className="fixed z-[9999] w-72 sm:w-80 rounded-2xl p-4 shadow-2xl pointer-events-auto animate-in fade-in zoom-in-95 duration-150"
+            className="fixed z-[9999] w-72 sm:w-80 max-w-[calc(100vw-24px)] rounded-2xl p-4 shadow-2xl pointer-events-auto animate-in fade-in zoom-in-95 duration-150"
             style={{
               top: coords.top,
               right: coords.right,
@@ -183,7 +186,7 @@ export function MetInfoModal({ met, className = '' }: Props) {
               role="dialog"
               aria-modal="true"
               aria-labelledby="met-info-title"
-              className="w-full max-w-md rounded-2xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto"
+              className="w-full max-w-md rounded-2xl p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto"
               style={{
                 background: '#241D17',
                 border: '1px solid rgba(232, 220, 200, 0.15)',

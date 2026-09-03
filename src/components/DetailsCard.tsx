@@ -45,7 +45,7 @@ export function DetailsCard({
 
   return (
     <div
-      className="rounded-3xl p-6"
+      className="rounded-3xl p-4 sm:p-6"
       style={{
         background: 'var(--bg-elevated)',
         border: '1px solid var(--border-color)',
@@ -57,7 +57,7 @@ export function DetailsCard({
         {t('details.title')}
       </h2>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* ── Weight ── */}
         <div className="space-y-2">
           <label htmlFor="weight-input" className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
@@ -70,6 +70,7 @@ export function DetailsCard({
             <input
               id="weight-input"
               type="number"
+              inputMode="decimal"
               value={weight ?? ''}
               onChange={handleWeightChange}
               className="w-full px-4 py-2.5 bg-transparent outline-none"
@@ -90,7 +91,7 @@ export function DetailsCard({
                   key={u}
                   type="button"
                   aria-label={`Select ${u}`}
-                  className="px-3 text-sm font-semibold transition-colors cursor-pointer"
+                  className="px-3.5 sm:px-3 py-2 text-sm font-semibold transition-colors cursor-pointer min-h-[42px] flex items-center justify-center"
                   style={{
                     color: weightUnit === u ? 'var(--accent-matcha)' : 'var(--text-muted)',
                     background: weightUnit === u ? 'rgba(139,168,136,0.15)' : 'transparent',
@@ -119,6 +120,7 @@ export function DetailsCard({
             <input
               id="duration-input"
               type="number"
+              inputMode="decimal"
               value={durationValue ?? ''}
               onChange={handleDurationChange}
               className="w-full px-3 py-2.5 bg-transparent outline-none"
@@ -140,7 +142,7 @@ export function DetailsCard({
                   key={u}
                   type="button"
                   aria-label={`Select ${u}`}
-                  className="px-3 text-sm font-semibold transition-colors cursor-pointer"
+                  className="px-3.5 sm:px-3 py-2 text-sm font-semibold transition-colors cursor-pointer min-h-[42px] flex items-center justify-center"
                   style={{
                     color: durationUnit === u ? 'var(--accent-matcha)' : 'var(--text-muted)',
                     background: durationUnit === u ? 'rgba(139,168,136,0.15)' : 'transparent',

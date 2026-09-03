@@ -52,12 +52,11 @@ export function ActivityPicker({ selectedActivity, onSelect }: Props) {
 
   return (
     <div
-      className="rounded-3xl p-6 flex flex-col"
+      className="rounded-3xl p-4 sm:p-6 flex flex-col h-[380px] sm:h-[460px] md:h-[520px]"
       style={{
         background: 'var(--bg-elevated)',
         border: '1px solid var(--border-color)',
         boxShadow: 'var(--shadow-sm)',
-        height: '520px',
       }}
     >
       <h2 className="text-xl font-bold flex items-center gap-2 mb-4">
@@ -92,7 +91,7 @@ export function ActivityPicker({ selectedActivity, onSelect }: Props) {
             type="button"
             aria-label="Clear search"
             onClick={() => setSearch('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-xs px-1.5 py-0.5 rounded cursor-pointer"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center text-xs rounded-md cursor-pointer transition-colors"
             style={{ color: 'var(--text-muted)', background: 'rgba(232,220,200,0.08)' }}
           >
             ✕
@@ -101,7 +100,7 @@ export function ActivityPicker({ selectedActivity, onSelect }: Props) {
       </div>
 
       {/* List area */}
-      <div className="flex-1 overflow-y-auto -mr-2 pr-2">
+      <div className="flex-1 overflow-y-auto overscroll-contain -mr-2 pr-2">
         {/* Flat search results */}
         {isSearching && (
           <div className="space-y-0.5">

@@ -106,44 +106,52 @@ function App() {
   // ── Render ────────────────────────────────────────────────────────────────
   return (
     <div
-      className="min-h-screen p-4 md:p-8"
+      className="min-h-screen p-3.5 sm:p-6 md:p-8"
       style={{
         background: 'var(--bg-color)',
         color: 'var(--text-primary)',
         fontFamily: 'var(--font-ui)',
       }}
     >
-      <div className="max-w-4xl mx-auto space-y-8">
+      <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
         <AppHeader />
 
-        <main className="grid md:grid-cols-[1fr_350px] gap-8">
-          {/* Left column */}
-          <div className="space-y-6">
-            <DetailsCard
-              weight={weight}
-              weightUnit={weightUnit}
-              durationValue={durationValue}
-              durationUnit={durationUnit}
-              onWeightChange={setWeight}
-              onWeightUnitChange={handleWeightUnitChange}
-              onDurationChange={setDurationValue}
-              onDurationUnitChange={handleDurationUnitChange}
-            />
-            <ActivityPicker
-              selectedActivity={selectedActivity}
-              onSelect={setSelectedActivity}
-            />
+        <main className="flex flex-col gap-6 md:grid md:grid-cols-[1fr_350px] md:gap-8">
+          {/* Left column on desktop / ordered items on mobile */}
+          <div className="contents md:block md:space-y-6">
+            <div className="order-1">
+              <DetailsCard
+                weight={weight}
+                weightUnit={weightUnit}
+                durationValue={durationValue}
+                durationUnit={durationUnit}
+                onWeightChange={setWeight}
+                onWeightUnitChange={handleWeightUnitChange}
+                onDurationChange={setDurationValue}
+                onDurationUnitChange={handleDurationUnitChange}
+              />
+            </div>
+            <div className="order-3">
+              <ActivityPicker
+                selectedActivity={selectedActivity}
+                onSelect={setSelectedActivity}
+              />
+            </div>
           </div>
 
-          {/* Right column */}
-          <div className="space-y-6">
-            <CalorieBurnCard
-              calories={currentCalories}
-              selectedActivity={selectedActivity}
-              durationLabel={durationLabel}
-              onAdd={addToLog}
-            />
-            <DailyLog log={log} onRemove={removeFromLog} />
+          {/* Right column on desktop / ordered items on mobile */}
+          <div className="contents md:block md:space-y-6">
+            <div className="order-2">
+              <CalorieBurnCard
+                calories={currentCalories}
+                selectedActivity={selectedActivity}
+                durationLabel={durationLabel}
+                onAdd={addToLog}
+              />
+            </div>
+            <div className="order-4">
+              <DailyLog log={log} onRemove={removeFromLog} />
+            </div>
           </div>
         </main>
       </div>

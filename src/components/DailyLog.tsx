@@ -14,7 +14,7 @@ export function DailyLog({ log, onRemove }: Props) {
 
   return (
     <div
-      className="rounded-3xl p-6"
+      className="rounded-3xl p-4 sm:p-6"
       style={{
         background: 'var(--bg-elevated)',
         border: '1px solid var(--border-color)',

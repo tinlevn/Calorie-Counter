@@ -33,6 +33,9 @@ export function DisclaimerModal({ className = '' }: Props) {
   }
 
   const handleMouseEnter = () => {
+    if (typeof window !== 'undefined' && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      return
+    }
     if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current)
     updateCoords()
     setShowHoverCard(true)
@@ -86,7 +89,7 @@ export function DisclaimerModal({ className = '' }: Props) {
         onBlur={handleMouseLeave}
         aria-label={t('disclaimer.buttonAria')}
         title={t('disclaimer.tooltip')}
-        className="inline-flex items-center justify-center w-6 h-6 rounded-full transition-all text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-amber-300/60 cursor-pointer"
+        className="inline-flex items-center justify-center w-7 h-7 sm:w-6 sm:h-6 rounded-full transition-all text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-amber-300/60 cursor-pointer"
         style={{
           background: 'rgba(255, 248, 236, 0.18)',
           color: '#FFF8EC',
@@ -108,7 +111,7 @@ export function DisclaimerModal({ className = '' }: Props) {
               if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current)
             }}
             onMouseLeave={handleMouseLeave}
-            className="fixed z-[9999] w-80 sm:w-96 rounded-2xl p-4 shadow-2xl pointer-events-auto animate-in fade-in zoom-in-95 duration-150"
+            className="fixed z-[9999] w-80 sm:w-96 max-w-[calc(100vw-24px)] rounded-2xl p-4 shadow-2xl pointer-events-auto animate-in fade-in zoom-in-95 duration-150"
             style={{
               top: coords.top,
               right: coords.right,
@@ -210,7 +213,7 @@ export function DisclaimerModal({ className = '' }: Props) {
               role="dialog"
               aria-modal="true"
               aria-labelledby="disclaimer-title"
-              className="w-full max-w-lg rounded-2xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto"
+              className="w-full max-w-lg rounded-2xl p-5 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto"
               style={{
                 background: '#241D17',
                 border: '1px solid rgba(232, 220, 200, 0.15)',

@@ -76,3 +76,4 @@ test('Language fallback whitelist safety', () => {
   assert.equal(validateLang(null), 'vi')
   assert.equal(validateLang('<script>'), 'vi')
 })
+

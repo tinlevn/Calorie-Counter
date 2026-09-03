@@ -20,7 +20,7 @@ export function CalorieBurnCard({ calories, selectedActivity, durationLabel, onA
 
   return (
     <div
-      className="rounded-3xl p-6 relative overflow-hidden"
+      className="rounded-3xl p-5 sm:p-6 relative overflow-hidden"
       style={{
         background: 'linear-gradient(135deg, #C03B26 0%, #E8442F 40%, #FDBE02 100%)',
         boxShadow: '0 8px 32px rgba(232,68,47,0.35)',
@@ -59,10 +59,8 @@ export function CalorieBurnCard({ calories, selectedActivity, durationLabel, onA
 
         <div className="flex items-baseline gap-2 mb-1">
           <span
-            className="font-black"
+            className="font-black text-4xl sm:text-5xl md:text-[56px] leading-[1.05]"
             style={{
-              fontSize: '56px',
-              lineHeight: 1.05,
               fontFamily: 'var(--font-mono)',
               color: '#FFF8EC',
             }}
@@ -88,7 +86,7 @@ export function CalorieBurnCard({ calories, selectedActivity, durationLabel, onA
           type="button"
           onClick={onAdd}
           disabled={!canAdd}
-          className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm transition-all border backdrop-blur-md ${
+          className={`w-full flex items-center justify-center gap-2 py-3 min-h-[46px] rounded-xl font-semibold text-sm transition-all border backdrop-blur-md ${
             canAdd
               ? 'bg-[rgba(255,248,236,0.18)] hover:bg-[rgba(255,248,236,0.28)] text-[#FFF8EC] border-[rgba(255,248,236,0.25)] cursor-pointer opacity-100'
               : 'bg-[rgba(255,248,236,0.18)] text-[#FFF8EC] border-[rgba(255,248,236,0.25)] cursor-not-allowed opacity-50'

@@ -34,7 +34,7 @@ export function LogEntryRow({ entry, onRemove }: Props) {
       <button
         type="button"
         onClick={() => onRemove(entry.id)}
-        className="p-2 rounded-lg opacity-70 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100 focus:opacity-100 focus-visible:opacity-100 transition-all text-[var(--text-muted)] hover:text-[var(--accent-passionfruit)] hover:bg-[rgba(232,68,47,0.1)] cursor-pointer"
+        className="p-2 sm:p-1.5 min-w-[38px] min-h-[38px] flex items-center justify-center rounded-lg opacity-70 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100 focus:opacity-100 focus-visible:opacity-100 transition-all text-[var(--text-muted)] hover:text-[var(--accent-passionfruit)] hover:bg-[rgba(232,68,47,0.1)] cursor-pointer shrink-0"
         aria-label={`Remove ${displayName}`}
         title="Remove"
       >
