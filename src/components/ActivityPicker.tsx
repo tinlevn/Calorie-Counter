@@ -13,9 +13,7 @@ type Props = {
 export function ActivityPicker({ selectedActivity, onSelect }: Props) {
   const { t } = useTranslation()
   const [search, setSearch] = useState('')
-  const [openCategories, setOpenCategories] = useState<Set<string>>(
-    new Set(['Cardio & Aerobics', 'Running & Walking'])
-  )
+  const [openCategories, setOpenCategories] = useState<Set<string>>(new Set())
 
   const isSearching = search.trim().length > 0
 
